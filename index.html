@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() { // we start the JS execution until the DOM content has loaded so we can invoke it.
+
+                //When correct answer is clicked, change color to green
+                let correct = document.querySelector('.correct'); // we select the class 'correct'
+                correct.addEventListener('click', function() { // and make the button green when the class i clicked.
+                    correct.style.backgroundColor = 'green';
+                    document.querySelector('#feedback1').innerHTML = 'Correct!'; // we select the id= feedback1 and paste a text in the objects innerHTML
+                });
+                //When incorrect answer is clicked, change color to red
+                let wrong = document.querySelectorAll('.wrong'); // we select the class 'wrong'
+                for (let i = 0; i < wrong.length; i++) {
+                    wrong[i].addEventListener('click', function() {
+                    wrong[i].style.backgroundColor = 'red';
+                    document.querySelector('#feedback1').innerHTML = 'Wrong !';
+                    });
+                }
+
+                //Check free response submission
+                document.querySelector('#check').addEventListener('click', function () {
+                    let input = document.querySelector('input');
+                    if (input.value === 'Saad') {
+                        input.style.backgroundColor = 'green';
+                        document.querySelector('#feedback2').innerHTML = 'Correct !';
+                    } else {
+                        input.style.backgroundColor = 'red';
+                        document.querySelector('#feedback2').innerHTML = 'Wrong !';
+                    }
+                });
+
+            });
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                    <h3> Hvad bliver Sallam kaldt som kælenavn ? </h3>
+                    <button class = "wrong" >Salamjani</button>
+                    <button class = "correct" >Salamski</button>
+                    <button class = "wrong" >Saneman</button>
+            <p id = "feedback1"> </p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                    <h3> Hvem blandt Saad og Sallam løber hurtigst? </h3>
+                    <input type="text" ></input>
+                    <button id = "check" > Check Answer </Button>
+
+                    <p id = "feedback2" ></p>
+
+            </div>
+        </div>
+    </body>
+</html>
